@@ -63,6 +63,18 @@ export default function Home() {
             Will Not Be Found
           </Link>
         </div>
+
+        <div className="mt-8">
+          <div className="mt-4">
+            <p className="text-gray-600 mb-2">this is a private route that is not accessible via direct URL</p>
+            <Link
+              href="/_admin"
+              className="text-gray-600 hover:text-gray-800 font-medium"
+            >
+              Admin Dashboard →
+            </Link>
+          </div>
+        </div>
       </div>
     </main>
   );
