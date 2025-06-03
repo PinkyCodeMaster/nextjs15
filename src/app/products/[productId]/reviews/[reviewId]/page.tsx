@@ -1,7 +1,14 @@
 import React from "react";
 import Link from "next/link";
 
-export default async function ProductReviewPage({ params }: { params: { productId: string; reviewId: string } }) {
+type Props = {
+    params: Promise<{
+        productId: string;
+        reviewId: string;
+    }>;
+};
+
+export default async function ProductReviewPage({ params }: Props) {
     const { productId, reviewId } = await params;
 
     return (
@@ -28,6 +35,13 @@ export default async function ProductReviewPage({ params }: { params: { productI
                         className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
                     >
                         ← Back to Product
+                    </Link>
+
+                    <Link
+                        href={`/products/${productId}/reviews`}
+                        className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+                    >
+                        ← Back to Reviews
                     </Link>
 
                     <Link
