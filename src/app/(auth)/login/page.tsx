@@ -24,6 +24,22 @@
  */
 
 import Link from "next/link";
+import type { Metadata } from "next";
+
+/**
+ * Login Page
+ * 
+ * Next.js Concepts Demonstrated:
+ * 1. Metadata Inheritance
+ *    - Uses auth layout's metadata template
+ *    - Page-specific title and description
+ *    - Combines with layout metadata
+ */
+
+export const metadata: Metadata = {
+  title: 'Login',
+  description: 'Sign in to your Next.js account',
+};
 
 export default function LoginPage() {
   return (
@@ -39,8 +55,7 @@ export default function LoginPage() {
             <input
               type="email"
               id="email"
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
-              placeholder="Enter your email"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
             />
           </div>
 
@@ -51,8 +66,7 @@ export default function LoginPage() {
             <input
               type="password"
               id="password"
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
-              placeholder="Enter your password"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
             />
           </div>
 
@@ -78,7 +92,7 @@ export default function LoginPage() {
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+            className="w-full rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             Sign in
           </button>

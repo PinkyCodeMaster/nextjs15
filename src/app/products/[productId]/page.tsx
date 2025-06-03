@@ -1,4 +1,5 @@
 import React from "react";
+import type { Metadata } from "next";
 
 /**
  * Product Details Page
@@ -19,8 +20,43 @@ import React from "react";
  *    - Shares navigation and breadcrumbs
  *    - Consistent UI across product pages
  *
+ * 4. Dynamic Metadata
+ *    - Generate metadata based on route params
+ *    - SEO optimization per product
+ *    - OpenGraph and Twitter cards
+ *
  * Note: For dynamic routes, params is a plain object, not a Promise. Only use async if you need to fetch data.
  */
+
+// Dynamic metadata generation
+export async function generateMetadata({ params }: { params: Promise<{ productId: string }> }): Promise<Metadata> {
+  // In a real app, you would fetch product data here
+  const { productId } = await params;
+  
+  return {
+    title: `Product ${productId} | Next.js Store`,
+    description: `View details for Product ${productId}. Features, specifications, and customer reviews.`,
+    openGraph: {
+      title: `Product ${productId} | Next.js Store`,
+      description: `View details for Product ${productId}. Features, specifications, and customer reviews.`,
+      type: 'website',
+      images: [
+        {
+          url: `https://example.com/products/${productId}/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: `Product ${productId}`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `Product ${productId} | Next.js Store`,
+      description: `View details for Product ${productId}. Features, specifications, and customer reviews.`,
+      images: [`https://example.com/products/${productId}/og-image.jpg`],
+    },
+  };
+}
 
 export default async function ProductPage({ params }: { params: Promise<{ productId: string }> }) {
   const { productId } = await params;

@@ -19,9 +19,13 @@
  *    - Optimal component rendering strategy
  * 
  * 4. Metadata API
- *    - Static metadata configuration
+ *    - Root metadata configuration
  *    - SEO optimization
  *    - Dynamic metadata support
+ *    - Metadata inheritance
+ *    - OpenGraph and Twitter cards
+ *    - Icons and manifest
+ *    - Viewport and theme color
  * 
  * 5. Font Optimization
  *    - Using next/font for optimized font loading
@@ -79,9 +83,91 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Root metadata configuration
 export const metadata: Metadata = {
-  title: "Next.js Learning App",
-  description: "A comprehensive Next.js learning application",
+  metadataBase: new URL('https://your-domain.com'),
+  title: {
+    template: '%s | Next.js Learning App',
+    default: 'Next.js Learning App - Master Modern Web Development',
+  },
+  description: 'A comprehensive Next.js learning application demonstrating modern web development concepts and best practices.',
+  keywords: ['Next.js', 'React', 'Web Development', 'Learning', 'Tutorial'],
+  authors: [{ name: 'Your Name' }],
+  creator: 'Your Name',
+  publisher: 'Your Company',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: '/apple-touch-icon-precomposed.png',
+    },
+  },
+  manifest: '/site.webmanifest',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://your-domain.com',
+    siteName: 'Next.js Learning App',
+    title: 'Next.js Learning App - Master Modern Web Development',
+    description: 'A comprehensive Next.js learning application demonstrating modern web development concepts and best practices.',
+    images: [
+      {
+        url: 'https://your-domain.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Next.js Learning App',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Next.js Learning App - Master Modern Web Development',
+    description: 'A comprehensive Next.js learning application demonstrating modern web development concepts and best practices.',
+    creator: '@yourusername',
+    images: ['https://your-domain.com/twitter-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-site-verification',
+    yandex: 'your-yandex-verification',
+    yahoo: 'your-yahoo-verification',
+  },
+  alternates: {
+    canonical: 'https://your-domain.com',
+    languages: {
+      'en-US': 'https://your-domain.com/en-US',
+      'de-DE': 'https://your-domain.com/de-DE',
+    },
+  },
+  category: 'technology',
+};
+
+// Separate viewport configuration
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
 };
 
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
