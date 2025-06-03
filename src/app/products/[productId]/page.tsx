@@ -22,8 +22,8 @@ import React from "react";
  * Note: For dynamic routes, params is a plain object, not a Promise. Only use async if you need to fetch data.
  */
 
-export default function ProductPage({ params }: { params: { productId: string } }) {
-  const { productId } = params;
+export default async function ProductPage({ params }: { params: Promise<{ productId: string }> }) {
+  const { productId } = await params;
   return (
     <div className="p-6 container mx-auto">
       <div className="lg:grid lg:grid-cols-2 lg:gap-x-8">
