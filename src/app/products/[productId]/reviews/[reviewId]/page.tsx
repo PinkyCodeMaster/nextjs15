@@ -1,5 +1,6 @@
-import React from "react";
+import { notFound } from "next/navigation";
 import Link from "next/link";
+import React from "react";
 
 type Props = {
     params: Promise<{
@@ -10,6 +11,10 @@ type Props = {
 
 export default async function ProductReviewPage({ params }: Props) {
     const { productId, reviewId } = await params;
+
+    if (reviewId > "100") {
+        notFound();
+    }
 
     return (
         <main className="min-h-screen bg-gray-100 py-10 px-4">
