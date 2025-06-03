@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 
 /**
@@ -17,6 +20,16 @@ import Link from "next/link";
  * - No need for explicit route configuration
  */
 export default function Home() {
+  const [error, setError] = useState<Error | null>(null);
+
+  const triggerError = () => {
+    setError(new Error("This is a simulated error from the root page."));
+  };
+
+  if (error) {
+    throw error;
+  }
+
   return (
     <main className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
       <div className="max-w-lg w-full bg-white rounded-lg shadow p-8 text-center">
@@ -78,6 +91,13 @@ export default function Home() {
             </Link>
           </div>
         </div>
+
+        <button
+          onClick={triggerError}
+          className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors"
+        >
+          Trigger Error
+        </button>
       </div>
     </main>
   );
