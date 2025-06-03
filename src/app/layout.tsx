@@ -173,7 +173,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <main className="min-h-[calc(100vh-4rem)] bg-gray-50">{children}</main>
+        <main className="min-h-[calc(100vh-4rem)] container mx-auto py-4 ">{children}</main>
         <SpeedInsights />
         <Analytics />
       </body>
