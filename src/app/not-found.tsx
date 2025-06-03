@@ -27,8 +27,8 @@ export default function NotFound() {
                     404 - Page Not Found
                 </h1>
                 
-                <p className="text-gray-600 mb-8">
-                    Oops! The page you're looking for doesn't exist or has been moved.
+                <p className="text-gray-600 mb-6">
+                    We couldn&apos;t find what you&apos;re looking for.
                 </p>
 
                 {/* 

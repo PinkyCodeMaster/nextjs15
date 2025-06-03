@@ -37,8 +37,8 @@ export default function ReviewNotFound() {
                 <p className="text-gray-600 mb-2">
                     Review #{reviewId} for Product #{productId}
                 </p>
-                <p className="text-gray-600 mb-8">
-                    Sorry, this review doesn't exist or has been removed.
+                <p className="text-gray-600 mb-6">
+                    We couldn&apos;t find the review you&apos;re looking for.
                 </p>
 
                 {/* 

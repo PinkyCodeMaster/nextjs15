@@ -27,8 +27,8 @@ export default function ProductsNotFound() {
                     Product Not Found
                 </h1>
                 
-                <p className="text-gray-600 mb-8">
-                    Sorry, we couldn't find the product you're looking for.
+                <p className="text-gray-600 mb-6">
+                    We couldn&apos;t find what you&apos;re looking for.
                 </p>
 
                 {/* 
