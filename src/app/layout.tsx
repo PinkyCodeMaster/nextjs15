@@ -68,12 +68,10 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import { usePathname } from "next/navigation";
+import Header from "@/components/Header";
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import Link from "next/link";
-import MobileMenu from "@/components/MobileMenu";
-import Header from "./components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -87,53 +85,53 @@ const geistMono = Geist_Mono({
 
 // Root metadata configuration
 export const metadata: Metadata = {
-  metadataBase: new URL('https://your-domain.com'),
+  metadataBase: new URL("https://your-domain.com"),
   title: {
-    template: '%s | Next.js Learning App',
-    default: 'Next.js Learning App - Master Modern Web Development',
+    template: "%s | Next.js Learning App",
+    default: "Next.js Learning App - Master Modern Web Development",
   },
-  description: 'A comprehensive Next.js learning application demonstrating modern web development concepts and best practices.',
-  keywords: ['Next.js', 'React', 'Web Development', 'Learning', 'Tutorial'],
-  authors: [{ name: 'Your Name' }],
-  creator: 'Your Name',
-  publisher: 'Your Company',
+  description: "A comprehensive Next.js learning application demonstrating modern web development concepts and best practices.",
+  keywords: ["Next.js", "React", "Web Development", "Learning", "Tutorial"],
+  authors: [{ name: "Your Name" }],
+  creator: "Your Name",
+  publisher: "Your Company",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
     other: {
-      rel: 'apple-touch-icon-precomposed',
-      url: '/apple-touch-icon-precomposed.png',
+      rel: "apple-touch-icon-precomposed",
+      url: "/apple-touch-icon-precomposed.png",
     },
   },
-  manifest: '/site.webmanifest',
+  manifest: "/site.webmanifest",
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://your-domain.com',
-    siteName: 'Next.js Learning App',
-    title: 'Next.js Learning App - Master Modern Web Development',
-    description: 'A comprehensive Next.js learning application demonstrating modern web development concepts and best practices.',
+    type: "website",
+    locale: "en_US",
+    url: "https://your-domain.com",
+    siteName: "Next.js Learning App",
+    title: "Next.js Learning App - Master Modern Web Development",
+    description: "A comprehensive Next.js learning application demonstrating modern web development concepts and best practices.",
     images: [
       {
-        url: 'https://your-domain.com/og-image.jpg',
+        url: "https://your-domain.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: 'Next.js Learning App',
+        alt: "Next.js Learning App",
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Next.js Learning App - Master Modern Web Development',
-    description: 'A comprehensive Next.js learning application demonstrating modern web development concepts and best practices.',
-    creator: '@yourusername',
-    images: ['https://your-domain.com/twitter-image.jpg'],
+    card: "summary_large_image",
+    title: "Next.js Learning App - Master Modern Web Development",
+    description: "A comprehensive Next.js learning application demonstrating modern web development concepts and best practices.",
+    creator: "@yourusername",
+    images: ["https://your-domain.com/twitter-image.jpg"],
   },
   robots: {
     index: true,
@@ -141,44 +139,39 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   verification: {
-    google: 'your-google-site-verification',
-    yandex: 'your-yandex-verification',
-    yahoo: 'your-yahoo-verification',
+    google: "your-google-site-verification",
+    yandex: "your-yandex-verification",
+    yahoo: "your-yahoo-verification",
   },
   alternates: {
-    canonical: 'https://your-domain.com',
+    canonical: "https://your-domain.com",
     languages: {
-      'en-US': 'https://your-domain.com/en-US',
-      'de-DE': 'https://your-domain.com/de-DE',
+      "en-US": "https://your-domain.com/en-US",
+      "de-DE": "https://your-domain.com/de-DE",
     },
   },
-  category: 'technology',
+  category: "technology",
 };
 
 // Separate viewport configuration
 export const viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
   maximumScale: 1,
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
 };
 
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
-  const pathname = usePathname();
-  const isAuthPage = pathname.startsWith('/auth');
-  const isAdminPage = pathname.startsWith('/admin');
-  const isProductPage = pathname.startsWith('/products');
-  const isBlogPage = pathname.startsWith('/blog');
-  const isDocsPage = pathname.startsWith('/docs');
+ 
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>

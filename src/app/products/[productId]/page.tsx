@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ productId
     openGraph: {
       title: `Product ${productId} | Next.js Store`,
       description: `View details for Product ${productId}. Features, specifications, and customer reviews.`,
-      type: 'website',
+      type: "website",
       images: [
         {
           url: `https://example.com/products/${productId}/og-image.jpg`,
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ productId
       ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title: `Product ${productId} | Next.js Store`,
       description: `View details for Product ${productId}. Features, specifications, and customer reviews.`,
       images: [`https://example.com/products/${productId}/og-image.jpg`],

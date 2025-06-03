@@ -8,7 +8,7 @@
  * @see https://nextjs.org/docs/app/building-your-application/routing/colocation#private-folders
  */
 
-import Link from 'next/link'
+import Link from "next/link"
 
 export default function AdminPage() {
   return (

@@ -37,8 +37,8 @@ import type { Metadata } from "next";
  */
 
 export const metadata: Metadata = {
-  title: 'Login',
-  description: 'Sign in to your Next.js account',
+  title: "Login",
+  description: "Sign in to your Next.js account",
 };
 
 export default function LoginPage() {

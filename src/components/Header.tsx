@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import Link from "next/link";
+import MobileMenu from "@/components/MobileMenu";
 import { usePathname } from "next/navigation";
-import MobileMenu from "./MobileMenu";
+import Link from "next/link";
 
 /**
  * Header Component
@@ -28,17 +28,17 @@ export default function Header() {
   const pathname = usePathname();
 
   const isActive = (path: string) => {
-    if (path === '/') {
+    if (path === "/") {
       return pathname === path;
     }
     return pathname.startsWith(path);
   };
 
   const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/products', label: 'Products' },
-    { href: '/docs', label: 'Docs' },
-    { href: '/blog', label: 'Blog' },
+    { href: "/", label: "Home" },
+    { href: "/products", label: "Products" },
+    { href: "/docs", label: "Docs" },
+    { href: "/blog", label: "Blog" },
   ];
 
   return (
@@ -47,8 +47,8 @@ export default function Header() {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <Link 
-                href="/" 
+              <Link
+                href="/"
                 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent"
               >
                 Next.js App
@@ -59,11 +59,10 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium border-b-2 ${
-                    isActive(link.href)
-                      ? 'text-gray-900 border-blue-500'
-                      : 'text-gray-500 hover:text-gray-900 hover:border-gray-300 border-transparent'
-                  }`}
+                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium border-b-2 ${isActive(link.href)
+                    ? "text-gray-900 border-blue-500"
+                    : "text-gray-500 hover:text-gray-900 hover:border-gray-300 border-transparent"
+                    }`}
                 >
                   {link.label}
                 </Link>

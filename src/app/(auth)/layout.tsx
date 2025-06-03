@@ -20,24 +20,24 @@ import type { Metadata } from "next";
 // Static metadata for all auth pages
 export const metadata: Metadata = {
   title: {
-    template: '%s | Next.js Auth',
-    default: 'Authentication | Next.js Auth',
+    template: "%s | Next.js Auth",
+    default: "Authentication | Next.js Auth",
   },
-  description: 'Secure authentication for Next.js applications',
+  description: "Secure authentication for Next.js applications",
   robots: {
     index: false,
     follow: true,
   },
   openGraph: {
-    type: 'website',
-    title: 'Next.js Authentication',
-    description: 'Secure authentication for Next.js applications',
+    type: "website",
+    title: "Next.js Authentication",
+    description: "Secure authentication for Next.js applications",
     images: [
       {
-        url: 'https://example.com/auth-og.jpg',
+        url: "https://example.com/auth-og.jpg",
         width: 1200,
         height: 630,
-        alt: 'Next.js Authentication',
+        alt: "Next.js Authentication",
       },
     ],
   },
