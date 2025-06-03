@@ -11,7 +11,13 @@ function getFakeReviews(productId: string) {
     }));
 }
 
-export default async function ProductPage({ params }: { params: { productId: string } }) {
+type Props = {
+    params: Promise<{
+        productId: string;
+    }>;
+};
+
+export default async function ProductPage({ params }: Props) {
     const { productId } = await params;
     const reviews = getFakeReviews(productId);
 
