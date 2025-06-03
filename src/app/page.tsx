@@ -62,6 +62,9 @@ export default function Home() {
           <Link href="/will-not-be-found" className="px-5 py-3 bg-red-600 text-white rounded hover:bg-red-700 transition">
             Will Not Be Found
           </Link>
+          <Link href="/articles" className="px-5 py-3 bg-red-600 text-white rounded hover:bg-red-700 transition">
+            Articles
+          </Link>
         </div>
 
         <div className="mt-8">
