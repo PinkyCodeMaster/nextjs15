@@ -41,3 +41,31 @@ export const articles: Article[] = [
         },
     },
 ];
+
+export interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+}
+
+export const products: Product[] = [
+  {
+    id: "1",
+    name: "Premium Headphones",
+    description: "High-quality wireless headphones with noise cancellation",
+    price: 299.99
+  },
+  {
+    id: "2",
+    name: "Smart Watch",
+    description: "Feature-rich smartwatch with health tracking",
+    price: 199.99
+  },
+  {
+    id: "3",
+    name: "Wireless Earbuds",
+    description: "True wireless earbuds with premium sound quality",
+    price: 149.99
+  }
+];
