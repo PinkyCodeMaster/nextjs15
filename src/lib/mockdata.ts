@@ -2,6 +2,9 @@ export type Article = {
     id: string;
     title: string;
     summary: string;
+    excerpt: string;
+    image: string;
+    tags: string[];
     content: {
         en: string;
         es: string;
@@ -14,6 +17,9 @@ export const articles: Article[] = [
         id: "1",
         title: "Next.js Routing Deep Dive",
         summary: "Understand the powerful routing system of Next.js App Router.",
+        excerpt: "A comprehensive guide to Next.js routing features including dynamic routes, nested layouts, and route groups.",
+        image: "https://picsum.photos/800/400",
+        tags: ["Next.js", "Routing", "Web Development"],
         content: {
             en: "This article explores dynamic routes, nested layouts, and route groups in Next.js 15.",
             es: "Este artículo explora rutas dinámicas, diseños anidados y grupos de rutas en Next.js 15.",
@@ -24,6 +30,9 @@ export const articles: Article[] = [
         id: "2",
         title: "Understanding Server Components",
         summary: "Learn how Server Components improve performance and reduce bundle size.",
+        excerpt: "Discover how Server Components can significantly improve your application's performance and user experience.",
+        image: "https://picsum.photos/800/401",
+        tags: ["React", "Performance", "Server Components"],
         content: {
             en: "Server Components let you render on the server by default, reducing client-side JavaScript.",
             es: "Los Server Components permiten renderizar en el servidor por defecto, reduciendo el JavaScript del cliente.",
@@ -34,6 +43,9 @@ export const articles: Article[] = [
         id: "3",
         title: "Optimizing Performance in React",
         summary: "Best practices for fast-loading and responsive React applications.",
+        excerpt: "Learn essential techniques for optimizing React applications and delivering better user experiences.",
+        image: "https://picsum.photos/800/402",
+        tags: ["React", "Performance", "Optimization"],
         content: {
             en: "Discover strategies like code-splitting, lazy loading, and memoization to improve performance.",
             es: "Descubre estrategias como la división de código, carga diferida y memoización para mejorar el rendimiento.",
