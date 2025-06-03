@@ -2,9 +2,19 @@ import React from "react";
 import { articles } from "@/lib/mockdata";
 import Image from "next/image";
 
+// Simulate an error for demonstration
+function simulateError() {
+    if (Math.random() > 0.5) {
+        throw new Error("Failed to load articles. Please try again.");
+    }
+}
+
 export default async function BlogPage() {
     // Simulate loading
     await new Promise((resolve) => setTimeout(resolve, 3000));
+    
+    // Simulate potential error
+    simulateError();
     
     const [featured, ...rest] = articles;
     
@@ -49,9 +59,7 @@ export default async function BlogPage() {
                         <p className="text-gray-800 mb-4">{article.excerpt}</p>
                         <div className="flex gap-2">
                             {article.tags.map((tag) => (
-                                <span 
-                                    key={tag} 
-                                    className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-800"
+                                <span                                     key={tag}                                     className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-800"
                                 >
                                     {tag}
                                 </span>
