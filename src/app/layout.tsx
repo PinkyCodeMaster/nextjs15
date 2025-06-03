@@ -68,10 +68,12 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { usePathname } from "next/navigation";
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import Link from "next/link";
 import MobileMenu from "@/components/MobileMenu";
+import Header from "./components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -171,68 +173,17 @@ export const viewport = {
 };
 
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
+  const pathname = usePathname();
+  const isAuthPage = pathname.startsWith('/auth');
+  const isAdminPage = pathname.startsWith('/admin');
+  const isProductPage = pathname.startsWith('/products');
+  const isBlogPage = pathname.startsWith('/blog');
+  const isDocsPage = pathname.startsWith('/docs');
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* 
-          Header
-          - Persistent across all pages
-          - Contains navigation and branding
-          - Can include user context
-        */}
-        <header className="bg-white shadow-sm sticky top-0 z-50">
-          <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between h-16">
-              <div className="flex items-center">
-                <div className="flex-shrink-0">
-                  <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                    Next.js App
-                  </Link>
-                </div>
-                <div className="hidden md:ml-10 md:flex md:space-x-8">
-                  <Link href="/" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 border-b-2 border-blue-500">
-                    Home
-                  </Link>
-                  <Link href="/products" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-900 hover:border-gray-300 border-b-2 border-transparent">
-                    Products
-                  </Link>
-                  <Link href="/docs" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-900 hover:border-gray-300 border-b-2 border-transparent">
-                    Docs
-                  </Link>
-                  <Link href="/blog" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-900 hover:border-gray-300 border-b-2 border-transparent">
-                    Blog
-                  </Link>
-                </div>
-              </div>
-              <div className="hidden md:flex md:items-center md:space-x-4">
-                <Link href="/login" className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900">
-                  Sign in
-                </Link>
-                <Link href="/register" className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
-                  Get Started
-                </Link>
-              </div>
-              <div className="flex items-center md:hidden">
-                <MobileMenu />
-              </div>
-            </div>
-          </nav>
-        </header>
-
-        {/* 
-          Main Content
-          - Changes based on the current route
-          - Wrapped by the layout
-          - Can be nested with other layouts
-        */}
+        <Header />
         <main className="min-h-[calc(100vh-4rem)]">{children}</main>
-
-        {/* 
-          Footer
-          - Persistent across all pages
-          - Contains additional navigation
-          - Can include social links and copyright
-        */}
         <footer className="bg-gray-50 border-t">
           <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
