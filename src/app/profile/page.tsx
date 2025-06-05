@@ -17,8 +17,8 @@
  * - State management
  * - Client-side effects
  */
-'use client'
-import React, { useState } from 'react'
+"use client"
+import React, { useState } from "react"
 
 export default function ProfilePage() {
     const [count, setCount] = useState(0);

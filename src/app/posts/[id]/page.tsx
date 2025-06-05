@@ -12,15 +12,15 @@
  * - /posts/hello-world
  * - /posts/any-value
  */
-export default function PostPage({ params }: { params: { id: string } }) {
+export default async function PostPage({ params }: { params: Promise<{ id: string }> }) {
     // This will be executed on the server for each request
     const currentTime = new Date().toLocaleTimeString();
-    
+
     // Simulate fetching post data based on ID
     const post = {
-        id: params.id,
-        title: `Post ${params.id}`,
-        content: `This is the content for post ${params.id}`,
+        id: (await params).id,
+        title: `Post ${(await params).id}`,
+        content: `This is the content for post ${(await params).id}`,
         timestamp: currentTime
     };
 
@@ -28,7 +28,7 @@ export default function PostPage({ params }: { params: { id: string } }) {
         <div className="flex flex-col items-center justify-center min-h-screen p-4">
             <div className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full">
                 <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-                
+
                 <div className="mb-4">
                     <p className="text-gray-700">{post.content}</p>
                 </div>

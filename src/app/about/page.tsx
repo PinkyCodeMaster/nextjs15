@@ -16,14 +16,14 @@
  * - Keeping sensitive data on server
  * - Reducing client-side JavaScript
  */
-import React from 'react'
+import React from "react"
 
 export default function AboutPage() {
     // this will log out on the server side and on the client side
     console.log("AboutPage from server");
     return (
         <div className='flex flex-col items-center justify-center h-screen'>
-            <h1 className='text-2xl font-bold'>AboutPage</h1>
+            <h1 className='text-2xl font-bold'>AboutPage {new Date().toLocaleTimeString()}</h1>
         </div>
     )
 }
