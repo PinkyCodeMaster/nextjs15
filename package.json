@@ -4,10 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "eslint ./src --fix && next build",
     "start": "next start",
-    "lint": "next lint",
-    "format": "eslint ./src --fix"
+    "lint": "next lint"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
