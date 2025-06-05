@@ -30,15 +30,21 @@
  *    - Can't be used in Client Components
  * 
  * COOKIES:
- * - Cookies are sent in the Cookie header
- * - Format: "name=value; name2=value2"
- * - Can be accessed via:
- *   - headers().get('cookie')
- *   - request.cookies (NextRequest only)
- * - To set cookies in response:
- *   - Use Set-Cookie header
- *   - Multiple cookies need multiple Set-Cookie headers
- *   - Example: "Set-Cookie: name=value; Path=/; HttpOnly"
+ * Three ways to handle cookies:
+ * 1. request.cookies (NextRequest)
+ *    - Read-only access to cookies
+ *    - Convenient for reading specific cookies
+ *    - Example: request.cookies.get("theme")
+ * 
+ * 2. cookies() from next/headers
+ *    - Server-side cookie store
+ *    - Can read and set cookies
+ *    - Example: cookies().set("name", "value")
+ * 
+ * 3. Set-Cookie header (Manual)
+ *    - Direct header manipulation
+ *    - Use for complex cookie settings
+ *    - Example: "Set-Cookie: name=value; Path=/; HttpOnly"
  * 
  * RESPONSE TYPES:
  * - Use new Response() for custom responses
@@ -47,9 +53,10 @@
  *   - application/json for JSON
  * - Can also use NextResponse.json() for JSON responses
  */
-import { headers } from "next/headers";
+import { headers, cookies } from "next/headers";
+import { NextRequest } from "next/server";
 
-export async function GET() {
+export async function GET(request: NextRequest) {
     // Method 1: Using request.headers (Web API)
     // const requestHeaders = new Headers(request.headers);
     // console.log(requestHeaders.get("Authorization"));
@@ -58,19 +65,19 @@ export async function GET() {
     const headerList = await headers();
     console.log(headerList.get("Authorization"));
 
-    // Reading cookies from headers
-    const cookies = headerList.get("cookie");
-    console.log("Cookies:", cookies);
+    // Reading cookies using NextRequest
+    const theme = request.cookies.get("theme");
+    console.log("Theme:", theme);
 
-    // Example of returning HTML response with cookies
+    // Using cookies() from next/headers
+    const cookieStore = await cookies();
+    cookieStore.set("resultsPerPage", "10");
+    console.log("CookieStore:", cookieStore.get("resultsPerPage"));
+
     return new Response("<h1>Hello, world! from profile</h1>", {
         headers: {
             "Content-Type": "text/html",
-            // Set multiple cookies
-            "Set-Cookie": [
-                "session=abc123; Path=/; HttpOnly",
-                "theme=dark; Path=/; Max-Age=86400"
-            ].join(", ")
+            "Set-Cookie": "theme=dark; Path=/; HttpOnly"
         },
     });
 
