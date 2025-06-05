@@ -29,6 +29,17 @@
  *    - More convenient for just reading
  *    - Can't be used in Client Components
  * 
+ * COOKIES:
+ * - Cookies are sent in the Cookie header
+ * - Format: "name=value; name2=value2"
+ * - Can be accessed via:
+ *   - headers().get('cookie')
+ *   - request.cookies (NextRequest only)
+ * - To set cookies in response:
+ *   - Use Set-Cookie header
+ *   - Multiple cookies need multiple Set-Cookie headers
+ *   - Example: "Set-Cookie: name=value; Path=/; HttpOnly"
+ * 
  * RESPONSE TYPES:
  * - Use new Response() for custom responses
  * - Set Content-Type header to specify format:
@@ -47,10 +58,19 @@ export async function GET() {
     const headerList = await headers();
     console.log(headerList.get("Authorization"));
 
-    // Example of returning HTML response
+    // Reading cookies from headers
+    const cookies = headerList.get("cookie");
+    console.log("Cookies:", cookies);
+
+    // Example of returning HTML response with cookies
     return new Response("<h1>Hello, world! from profile</h1>", {
         headers: {
             "Content-Type": "text/html",
+            // Set multiple cookies
+            "Set-Cookie": [
+                "session=abc123; Path=/; HttpOnly",
+                "theme=dark; Path=/; Max-Age=86400"
+            ].join(", ")
         },
     });
 
@@ -60,7 +80,7 @@ export async function GET() {
     //         "Content-Type": "application/json",
     //     },
     // });
-
+    
     // Or using NextResponse.json():
     // return NextResponse.json({ message: "Hello" });
 }
